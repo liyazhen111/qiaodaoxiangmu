@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace 使用对应的Dao层的接口 -->
+<mapper namespace="com.qianfeng.dao.IQiandaoDao">
+
+	<resultMap type="Qiandao" id="qiandaoMap">
+		
+		<id property="id" column="id"/>
+		<result property="uname" column="uname" />
+		<result property="begantime" column="begantime" />
+		<result property="flag" column="flag" />
+		
+		
+	</resultMap>
+	
+	<insert id="addnewqiandao" parameterType="Qiandao">
+	insert into qiandao (uname,begantime,flag) values(#{uname},#{begantime},#{flag})
+	</insert>
+	
+	<select id="showqindao" parameterType="map" resultType="Qiandao">
+	select * from qiandao where uname=#{uname} limit #{page},#{limit}
+	</select>
+	
+	<select id="count" parameterType="string" resultType="int">
+	select count(1) from qiandao where uname=#{uname}
+	</select>
+	
+	<select id="selectall" parameterType="map" resultType="Qiandao">
+	select * from qiandao where begantime like CONCAT(CONCAT('%', #{time}), '%') 
+	and uname=#{uname}
+	
+	</select>
+	
+	<update id="updateall" parameterType="map">
+	update qiandao set flag=#{flag} where id=#{id}
+	</update>
+	
+</mapper>
+
+
+
+
