@@ -34,7 +34,7 @@ public class Qiandaosever implements IQiandaosever {
 		map.put("uname", name);
 		List<Qiandao> list = qiandao.selectall(map);
 		
-		if (list !=  null) {
+		if (list.size()!=0) {
 			for (Qiandao aa : list) {
 				if (aa.getFlag()<2) {
 					String[] split2 = split[1].split(":");

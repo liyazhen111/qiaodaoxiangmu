@@ -28,6 +28,7 @@ class IQiandaoConorller {
 		Qiandao q= new Qiandao();
 		q.setBegantime(date);
 		q.setUname(name);
+		System.out.println("我改了这边");
 		 try {
 			Qiandaosever.addneewqiandao(q , name);
 		} catch (Exception e) {
